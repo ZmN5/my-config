@@ -2,10 +2,14 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'git@github.com:w0rp/ale.git'
 Plug 'git@github.com:ludovicchabant/vim-gutentags.git'
-" Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'mhinz/vim-signify'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'Valloric/YouCompleteMe'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Yggdroot/indentLine'
+Plug 'tell-k/vim-autopep8'
+Plug 'jiangmiao/auto-pairs'
+Plug 'maralla/completor.vim'
 
 call plug#end()
 
@@ -14,6 +18,8 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 set hlsearch
+set cursorline
+
 autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
 
 " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
@@ -46,8 +52,14 @@ let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
 let g:airline#extensions#ale#enabled = 1
-
 let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
+
+" autopep8设置
+let g:autopep8_disable_show_diff=1
+
+" 自动补全设置
+let g:completor_python_binary='python3'
+
