@@ -10,15 +10,25 @@ Plug 'Yggdroot/indentLine'
 Plug 'tell-k/vim-autopep8'
 Plug 'jiangmiao/auto-pairs'
 Plug 'maralla/completor.vim'
+Plug 'git@github.com:rakr/vim-one.git'
 
 call plug#end()
 
-set nu
+" 缩进设置
 set shiftwidth=4
 set tabstop=4
 set expandtab
+
+" 高亮设置
 set hlsearch
-set cursorline
+
+" 当前行设置
+set cursorline  
+hi CursorLine cterm=NONE ctermbg=234 ctermfg=NONE
+
+" 行号设置
+set nu
+hi LineNr ctermfg=237
 
 autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
 
@@ -61,5 +71,22 @@ let g:ale_cpp_cppcheck_options = ''
 let g:autopep8_disable_show_diff=1
 
 " 自动补全设置
-let g:completor_python_binary='python3'
+let g:completor_python_binary='python'
+highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
+highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
+
+" 缓冲区切换设置
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+
+" 主题设置
+let g:airline_theme='one'
+colorscheme one
+set background=dark
+set t_8b=^[[48;2;%lu;%lu;%lum
+set t_8f=^[[38;2;%lu;%lu;%lum
+
+
 
