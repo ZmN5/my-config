@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'git@github.com:w0rp/ale.git'
+Plug 'w0rp/ale'
 Plug 'git@github.com:ludovicchabant/vim-gutentags.git'
 Plug 'mhinz/vim-signify'
 Plug 'skywind3000/asyncrun.vim'
@@ -9,8 +9,14 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/indentLine'
 Plug 'tell-k/vim-autopep8'
 Plug 'jiangmiao/auto-pairs'
-Plug 'maralla/completor.vim'
 Plug 'git@github.com:rakr/vim-one.git'
+Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
+
+" deplete
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 
 call plug#end()
 
@@ -54,26 +60,18 @@ endif
 
 
 " 动态检查设置, 用的ale
-let g:ale_linters_explicit = 1
-let g:ale_completion_delay = 500
-let g:ale_echo_delay = 20
-let g:ale_lint_delay = 500
-let g:ale_echo_msg_format = '[%linter%] %code: %%s'
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" Check Python files with flake8 and pylint.
+let g:ale_linters = {'javascript': ['eslint'], 'python': ['flake8', 'pylint']}
+" Fix Python files with autopep8 and yapf.
+let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'python':['autopep8', 'yapf']}
+" Disable warnings about trailing whitespace for Python files.
+let g:ale_warn_about_trailing_whitespace = 0
 let g:airline#extensions#ale#enabled = 1
-let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
-let g:ale_c_cppcheck_options = ''
-let g:ale_cpp_cppcheck_options = ''
-
-" autopep8设置
-let g:autopep8_disable_show_diff=1
-
-" 自动补全设置
-let g:completor_python_binary='python'
-highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
-highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
+let g:ale_fix_on_save = 1
+noremap <leader>p :ALEFix<cr>
 
 " 缓冲区切换设置
 nnoremap <silent> [b :bprevious<CR>
@@ -89,4 +87,7 @@ set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum
 
 
-
+" 自动补全
+highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
+highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
+let g:deoplete#enable_at_startup = 1
