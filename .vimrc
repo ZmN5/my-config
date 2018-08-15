@@ -18,6 +18,13 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 
+" git
+Plug 'git@github.com:tpope/vim-fugitive.git'
+
+" 状态栏
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 call plug#end()
 
 " 缩进设置
@@ -91,3 +98,15 @@ set t_8f=^[[38;2;%lu;%lu;%lum
 highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
 highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
 let g:deoplete#enable_at_startup = 1
+
+" 状态栏设置
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" 折叠设置
+set foldmethod=indent
+
+" 修改leader键
+let mapleader=","
+nmap <leader>w   :w<CR>
+nmap <leader>q   :q<CR>
