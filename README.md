@@ -1,4 +1,5 @@
-安装vim:
+``安装vim``:
+
 brew reinstall vim --with-python3 --with-luajit
 
 `插件管理`:

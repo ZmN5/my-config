@@ -25,6 +25,11 @@ Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.vim'
+
 call plug#end()
 
 " 缩进设置
@@ -110,3 +115,4 @@ set foldmethod=indent
 let mapleader=","
 nmap <leader>w   :w<CR>
 nmap <leader>q   :q<CR>
+nmap <leader>m   :MarkdownPreview<CR>
