@@ -12,6 +12,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'git@github.com:rakr/vim-one.git'
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
+Plug 'rizzatti/dash.vim'
 
 " deplete
 Plug 'Shougo/deoplete.nvim'
@@ -29,6 +30,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.vim'
+
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
 call plug#end()
 
@@ -115,4 +118,7 @@ set foldmethod=indent
 let mapleader=","
 nmap <leader>w   :w<CR>
 nmap <leader>q   :q<CR>
+nmap <leader>wq   :wq<CR>
 nmap <leader>m   :MarkdownPreview<CR>
+nmap <leader>l   :LeaderfFunction<CR>
+nmap <leader>v   :vsp .<CR>
