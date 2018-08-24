@@ -111,8 +111,6 @@ let g:deoplete#enable_at_startup = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
-" 折叠设置
-set foldmethod=indent
 
 " 修改leader键
 let mapleader=","
