@@ -37,6 +37,9 @@ Plug '~/.fzf'
 " go config
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 
+" git diff
+Plug 'airblade/vim-gitgutter'
+
 call plug#end()
 
 " 缩进设置
@@ -126,6 +129,9 @@ nmap <leader>wq   :wq<CR>
 nmap <leader>m   :MarkdownPreview<CR>
 nmap <leader>g   :LeaderfFunction<CR>
 nmap <leader>v   :vsp .<CR>
+nmap <leader>p   :set paste<CR>
+nmap <leader>np   :set nopaste<CR>
+
 
 
 
