@@ -32,13 +32,17 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.vim'
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug '~/.fzf'
+
+" go config
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 
 call plug#end()
 
 " 缩进设置
 set shiftwidth=4
 set tabstop=4
-set expandtab
+" set expandtab
 
 " 高亮设置
 set hlsearch
@@ -101,6 +105,8 @@ set background=dark
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum
 
+let NERDTreeIgnore = ['\.pyc$']
+
 
 " 自动补全
 highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
@@ -118,5 +124,8 @@ nmap <leader>w   :w<CR>
 nmap <leader>q   :q<CR>
 nmap <leader>wq   :wq<CR>
 nmap <leader>m   :MarkdownPreview<CR>
-nmap <leader>l   :LeaderfFunction<CR>
+nmap <leader>g   :LeaderfFunction<CR>
 nmap <leader>v   :vsp .<CR>
+
+
+
