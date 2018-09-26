@@ -131,7 +131,6 @@ nmap <leader>g   :LeaderfFunction<CR>
 nmap <leader>v   :vsp .<CR>
 nmap <leader>p   :set paste<CR>
 nmap <leader>np   :set nopaste<CR>
-
-
-
+vmap <leader>y   "+y
+nmap <leader>y   "+y
 
