@@ -40,6 +40,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
 " git diff
 Plug 'airblade/vim-gitgutter'
 
+" scala
+Plug 'derekwyatt/vim-scala'
+
 call plug#end()
 
 " 缩进设置
