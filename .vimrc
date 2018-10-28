@@ -26,10 +26,6 @@ Plug 'git@github.com:tpope/vim-fugitive.git'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" markdown
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.vim'
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug '~/.fzf'
@@ -42,6 +38,9 @@ Plug 'airblade/vim-gitgutter'
 
 " scala
 Plug 'derekwyatt/vim-scala'
+
+" racket
+Plug 'git@github.com:wlangstroth/vim-racket.git'
 
 call plug#end()
 
@@ -61,7 +60,7 @@ hi CursorLine cterm=NONE ctermbg=234 ctermfg=NONE
 set nu
 hi LineNr ctermfg=237
 
-autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
+" autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
 
 " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
@@ -111,7 +110,17 @@ set background=dark
 set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum
 
+" NERDTree config
 let NERDTreeIgnore = ['\.pyc$']
+" autocmd vimenter * NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 
 
 " 自动补全
@@ -129,11 +138,10 @@ let mapleader=","
 nmap <leader>w   :w<CR>
 nmap <leader>q   :q<CR>
 nmap <leader>wq   :wq<CR>
-nmap <leader>m   :MarkdownPreview<CR>
 nmap <leader>g   :LeaderfFunction<CR>
 nmap <leader>v   :vsp .<CR>
 nmap <leader>p   :set paste<CR>
-nmap <leader>np   :set nopaste<CR>
+nmap <leader>pp   :set nopaste<CR>
 vmap <leader>y   "+y
 nmap <leader>y   "+y
 
