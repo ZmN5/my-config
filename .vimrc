@@ -41,6 +41,10 @@ Plug 'derekwyatt/vim-scala'
 
 " racket
 Plug 'git@github.com:wlangstroth/vim-racket.git'
+Plug 'git@github.com:jpalardy/vim-slime.git'
+
+Plug 'git@github.com:vim-syntastic/syntastic.git'
+
 
 call plug#end()
 
@@ -145,3 +149,7 @@ nmap <leader>pp   :set nopaste<CR>
 vmap <leader>y   "+y
 nmap <leader>y   "+y
 
+" slime config
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": split($TMUX, ",")[0], "target_pane": ":.2"}
+let g:syntastic_enable_racket_racket_checker = 1
