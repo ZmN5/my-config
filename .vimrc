@@ -14,10 +14,8 @@ Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'rizzatti/dash.vim'
 
-" deplete
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+" YCM
+Plug 'git@github.com:Valloric/YouCompleteMe.git'
 
 " git
 Plug 'git@github.com:tpope/vim-fugitive.git'
@@ -130,7 +128,6 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " 自动补全
 highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
 highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
-let g:deoplete#enable_at_startup = 1
 
 " 状态栏设置
 let g:airline#extensions#tabline#left_sep = ' '
@@ -153,3 +150,12 @@ nmap <leader>y   "+y
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": ":.2"}
 let g:syntastic_enable_racket_racket_checker = 1
+
+" YCM config
+let g:ycm_python_interpreter_path = ''
+let g:ycm_python_sys_path = []
+let g:ycm_extra_conf_vim_data = [
+  \  'g:ycm_python_interpreter_path',
+  \  'g:ycm_python_sys_path'
+  \]
+let g:ycm_global_ycm_extra_conf = '~/global_extra_conf.py'
