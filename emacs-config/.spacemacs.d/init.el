@@ -33,13 +33,17 @@ values."
    '(
      yaml
      javascript
-     python
      racket
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     (python :variables
+             python-enable-yapf-format-on-save t
+             python-fill-column 79
+             python-auto-set-local-pyenv-version 'on-project-switch
+             python-sort-imports-on-save t)
      helm
      auto-completion
      better-defaults
@@ -309,12 +313,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (setq-default dotspacemacs-configuration-layers
-                '((python :variables
-                          python-enable-yapf-format-on-save t
-                          python-fill-column 79
-                          python-sort-imports-on-save t)
-  )))
+  )
 
 (defun dotspacemacs/user-config ()
   ;; Fix separators
