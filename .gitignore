@@ -1,0 +1,13 @@
+.DS\_Store
+*.swp
+.idea/
+.vscode/
+**/secrets.py
+**/*secrets.py
+**/local.py
+**/*_local.py
+**/*_locals.py
+**/*_bk
+venv/
+**/__pycache__/
+.python-version
