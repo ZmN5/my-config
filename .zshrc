@@ -59,6 +59,7 @@ ZSH_THEME="ys"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  autojump
   git
   source <(kubectl completion zsh)
 )
@@ -103,24 +104,40 @@ export SCALA_12_HOME=/usr/local/opt/scala/scala-2.12.4
 export SCALA_11_HOME=/usr/local/opt/scala/scala-2.11.4
 export SCALA_HOME=$SCALA_12_HOME
 export PATH="$SCALA_HOME/bin:$PATH"
+export PATH=~/.local/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/Applications/Racket v7.0/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 # alias tmux="TERM=screen-256color thus -2"
 export TERM=screen-256color
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='fd --type f'
 
 export KUBERNETES_PROVIDER=vagrant 
 export NUM_MINIONS=3
 export GOPATH="/Users/cangyufu/go"
 export PATH=$GOPATH/bin:$PATH
 
+export RACKETPATH="/Applications/Racket v7.0/bin"
 
 alias tns="tmux new -s"
 alias tat="tmux a -t"
 alias tls="tmux ls"
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
-alias ipy3.6="python3.6 -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
-alias ipy3.7="python3.7 -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+alias ipy36="python3.6 -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+alias ipy37="python3.7 -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
+
+# alias emacs="emacs -nw"
+#
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# config follow https://zhuanlan.zhihu.com/p/48076652
+
+alias cat='bat'
+export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
+alias pw="fzf --preview 'bat --color \"always\" {}'"
