@@ -18,7 +18,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'git@github.com:Valloric/YouCompleteMe.git'
 
 " git
-Plug 'git@github.com:tpope/vim-fugitive.git'
+" Plug 'git@github.com:tpope/vim-fugitive.git'
 
 " 状态栏
 Plug 'vim-airline/vim-airline'
@@ -26,7 +26,9 @@ Plug 'vim-airline/vim-airline-themes'
 
 
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-Plug '~/.fzf'
+" Plug '~/.fzf'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " go config
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries'  }
@@ -43,13 +45,26 @@ Plug 'git@github.com:jpalardy/vim-slime.git'
 
 Plug 'git@github.com:vim-syntastic/syntastic.git'
 
+" python
+Plug 'fisadev/vim-isort'
+
+" vim
+Plug 'posva/vim-vue'
+
+" Python docsting
+Plug 'git@github.com:heavenshell/vim-pydocstring.git'
+
 
 call plug#end()
 
 " 缩进设置
-set shiftwidth=4
-set tabstop=4
-" set expandtab
+set textwidth=79  " lines longer than 79 columns will be broken
+set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
+set tabstop=4     " a hard TAB displays as 4 columns
+set expandtab     " insert spaces when hitting TABs
+set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
+set shiftround    " round indent to multiple of 'shiftwidth'
+set autoindent    " align the new line indent with the previous line"
 
 " 高亮设置
 set hlsearch
@@ -97,7 +112,7 @@ let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'python':['autopep8', 
 let g:ale_warn_about_trailing_whitespace = 0
 let g:airline#extensions#ale#enabled = 1
 let g:ale_fix_on_save = 1
-noremap <leader>p :ALEFix<cr>
+" noremap <leader>p :ALEFix<cr>
 
 " 缓冲区切换设置
 nnoremap <silent> [b :bprevious<CR>
@@ -113,7 +128,7 @@ set t_8b=^[[48;2;%lu;%lu;%lum
 set t_8f=^[[38;2;%lu;%lu;%lum
 
 " NERDTree config
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', '\.swp$', '__pycache__', 'venv']
 " autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -136,6 +151,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " 修改leader键
 let mapleader=","
+nmap <leader>c   :Pydocstring<CR>
 nmap <leader>w   :w<CR>
 nmap <leader>q   :q<CR>
 nmap <leader>wq   :wq<CR>
@@ -145,11 +161,34 @@ nmap <leader>p   :set paste<CR>
 nmap <leader>pp   :set nopaste<CR>
 vmap <leader>y   "+y
 nmap <leader>y   "+y
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+map <leader>t oimport ipdb;ipdb.set_trace() <esc>
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+nnoremap <silent> <Leader>F :Ag<CR>
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
 
 " slime config
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": ":.2"}
 let g:syntastic_enable_racket_racket_checker = 1
+
+
+" python
+let g:vim_isort_map = '<C-i>'
 
 " YCM config
 let g:ycm_python_interpreter_path = ''
