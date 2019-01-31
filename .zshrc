@@ -59,7 +59,6 @@ ZSH_THEME="ys"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  autojump
   git
   source <(kubectl completion zsh)
 )
@@ -113,12 +112,13 @@ export CPPFLAGS="-I/usr/local/opt/openssl/include"
 # alias tmux="TERM=screen-256color thus -2"
 export TERM=screen-256color
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export KUBERNETES_PROVIDER=vagrant 
 export NUM_MINIONS=3
 export GOPATH="/Users/cangyufu/go"
 export PATH=$GOPATH/bin:$PATH
+
+export PIPENV_PYPI_MIRROR=http://mirrors.aliyun.com/pypi/simple
 
 export RACKETPATH="/Applications/Racket v7.0/bin"
 
@@ -139,5 +139,11 @@ eval "$(pyenv virtualenv-init -)"
 # config follow https://zhuanlan.zhihu.com/p/48076652
 
 alias cat='bat'
-export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build} --type f"
-alias pw="fzf --preview 'bat --color \"always\" {}'"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,venv} --type f"
+alias p="fzf --preview 'bat --color \"always\" {}'"
+source ~/my-config/z.sh
+alias v='vagrant'
+
+alias venv="source venv/bin/activate"
