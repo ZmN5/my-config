@@ -59,8 +59,11 @@ ZSH_THEME="ys"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  autojump
   git
   source <(kubectl completion zsh)
+  zsh-syntax-highlighting
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -103,7 +106,10 @@ export SCALA_12_HOME=/usr/local/opt/scala/scala-2.12.4
 export SCALA_11_HOME=/usr/local/opt/scala/scala-2.11.4
 export SCALA_HOME=$SCALA_12_HOME
 export PATH="$SCALA_HOME/bin:$PATH"
+export MYSQL_USER=root
+export MYSQL_PWD=abcd1234
 export PATH=~/.local/bin:$PATH
+alias aws-relay='ssh ein@54.222.141.68'
 export PATH=/usr/local/bin:$PATH
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/Applications/Racket v7.0/bin:$PATH"
@@ -136,6 +142,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+alias subot="/Users/cangyufu/.subot/venv/bin/subot"
+
 # config follow https://zhuanlan.zhihu.com/p/48076652
 
 alias cat='bat'
@@ -147,3 +155,5 @@ source ~/my-config/z.sh
 alias v='vagrant'
 
 alias venv="source venv/bin/activate"
+
+alias diff="colordiff"
