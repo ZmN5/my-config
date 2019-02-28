@@ -59,8 +59,11 @@ ZSH_THEME="ys"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  autojump
   git
   source <(kubectl completion zsh)
+  zsh-syntax-highlighting
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -136,6 +139,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+alias subot="/Users/cangyufu/.subot/venv/bin/subot"
+
 # config follow https://zhuanlan.zhihu.com/p/48076652
 
 alias cat='bat'
@@ -147,3 +152,5 @@ source ~/my-config/z.sh
 alias v='vagrant'
 
 alias venv="source venv/bin/activate"
+
+alias diff="colordiff"
