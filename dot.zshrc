@@ -59,7 +59,6 @@ ZSH_THEME="ys"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  autojump
   git
   source <(kubectl completion zsh)
   zsh-syntax-highlighting
@@ -148,9 +147,19 @@ alias cat='bat'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,venv} --type f"
 alias p="fzf --preview 'bat --color \"always\" {}'"
-source ~/my-config/z.sh
 alias v='vagrant'
 
 alias venv="source venv/bin/activate"
 
 alias diff="colordiff"
+
+# zplug config
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+ #z jump config
+# # # # # # # # # use zplug install to install your plugins and reload .zshrc
+zplug "changyuheng/fz", defer:1
+zplug "rupa/z", use:z.sh
+zplug load
+
