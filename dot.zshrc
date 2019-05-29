@@ -100,7 +100,6 @@ export JAVA_7_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/H
 export JAVA_8_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home"
 export JAVA_HOME=$JAVA_8_HOME
 export PATH="~/anaconda3/bin:$PATH"
-alias py3='source activate python364'
 export SCALA_12_HOME=/usr/local/opt/scala/scala-2.12.4
 export SCALA_11_HOME=/usr/local/opt/scala/scala-2.11.4
 export SCALA_HOME=$SCALA_12_HOME
@@ -142,12 +141,9 @@ alias subot="/Users/cangyufu/.subot/venv/bin/subot"
 
 # config follow https://zhuanlan.zhihu.com/p/48076652
 
-alias cat='bat'
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="fd --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,venv} --type f"
 alias p="fzf --preview 'bat --color \"always\" {}'"
-alias v='vagrant'
 
 alias venv="source venv/bin/activate"
 
@@ -163,3 +159,4 @@ zplug "changyuheng/fz", defer:1
 zplug "rupa/z", use:z.sh
 zplug load
 
+eval $(thefuck --alias)
